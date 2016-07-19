@@ -36,7 +36,7 @@ directories of each subject.
 
 MANDATORY OPTIONS
 
--r N, --run N
+-r, --run N
   An integer number, used for the name of the results directory,
   as runN.
 
@@ -153,6 +153,7 @@ do
             echo "Use -h option for a detailed description."
 	    exit 1
 	else
+	    N=${2}
 	    run="run${2}"
     	    shift 2
 	fi
@@ -219,7 +220,7 @@ then
 fi
 fsf_file=`ls ${templatedir} | grep "\.fsf\$"`
 
-report_script="./report_run.sh"
+report_script="./html_report.sh"
 
 for group in `ls ${rawdatadir} | grep ${g_pre} | sort -t "_" -nk2`
 do
@@ -473,7 +474,7 @@ ${brainpath_reo}.nii.gz \
             ############################################################
             ######### Execute feat
 
-	    # [ -z ${dryrun+x} ] && ${report_script} --current "${group}/${subject}" --silent ${run} &
+	    [ -z ${dryrun+x} ] && ${report_script} --current "${group}/${subject}" --silent -r ${N} &
 
 	    echo "INFO: ${group} ${subject} : begin : feat : $(date +"%x %T")"
 	    cmd="feat"
@@ -492,7 +493,7 @@ ${brainpath_reo}.nii.gz \
     done
 done
 
-# [ -z ${dryrun+x} ] && [ -z ${clobber+x} ] && ${report_script} --silent ${run}
+[ -z ${dryrun+x} ] && [ -z ${clobber+x} ] && ${report_script} --silent -r ${N}
 
 [ ! -z ${dryrun+x} ] && echo "Dry run mode: listed commands were NOT executed."
 
@@ -533,3 +534,6 @@ done
 # something.
 
 # TODO: Everything should be in English.
+
+# TODO: check for mandatory arguments of options, and complain if not
+# present.
