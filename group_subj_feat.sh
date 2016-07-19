@@ -20,18 +20,18 @@ function cmdhelp {
 DESCRIPTION
 
 This script runs feat on multiple subjects. The FRMI results must be
-organized in numbered directories for subjectes, within numbered
+organized in numbered directories for subjects, within numbered
 directories for groups, see the example below.
 
 The analysis is based in a template file fsf. Using awk fsf files are
-generated for each subject with the appropiate values. Strings to
+generated for each subject with the appropriate values. Strings to
 substituted in the template file must be empty , as "".
 
 The intended way to get the template is to perform a feat analysis in
 one subject using the GUI, and then remove some of the parameters of
 the resulting design.fsf file.
 
-Results will be placed in a different directory sructure, inside the
+Results will be placed in a different directory structure, inside the
 directories of each subject.
 
 MANDATORY OPTIONS
@@ -53,7 +53,7 @@ OTHER OPTIONS
   execute them. However, result directories are generated and template
   files are processed.
 
-ATENTION **
+ATTENTION **
 
 Some important variables are declared in the script, in future
 versions of this code they will be exposed as options. By now you need
@@ -80,7 +80,7 @@ ${script_name} -r 8
 
 A similar structure will be generated in the results directory, and
 inside each subject directory results will be stored in a run8
-subdirectory.
+sub directory.
 
 KNOWN ISSUES
 

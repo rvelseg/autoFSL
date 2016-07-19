@@ -22,7 +22,7 @@ DESCRIPTION
 Generate a HTML report for a, possibly running, execution of
 group_subj_feat.sh . The report contains links to the feat reports; a
 description (mouse hover) of the actions performed of each subject,
-readed from logs; is configured to ask the browser for auto refresh
+read from logs; is configured to ask the browser for auto refresh
 every minute; and is based on floats to render well even in small
 screens, e.g. mobile devices.
 
@@ -48,7 +48,7 @@ OTHER OPTIONS
   report. This <path> is relative to the root of the results directory
   structure.
 
-ATENTION **
+ATTENTION **
 
 Some important variables are declared in the script, in future
 versions of this code they will be exposed as options. By now you need
@@ -285,8 +285,6 @@ echo "</body>" >> ${run_report}
 # TODO: display total execution time.
 
 # TODO: display total disk usage of this run
-
-# TODO: work with absolute paths, remove the use of cd
 
 # TODO: Use exec rather than >> to redirect output
 
