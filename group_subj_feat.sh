@@ -499,10 +499,10 @@ done
 
 # TODO: Add option to clear logs.
 
-# TODO: Standarize the use of subshells, use $(command),
+# TODO: Standardize the use of subshells, use $(command),
 # rather than `command`
 
-# TODO: Standarize and clean the obtention of basename for files.
+# TODO: Standardize and clean the getting of base name for files.
 
 # TODO: parallelize at processor level, not with GPU. Ask for the
 # number of processors, and call the same number of feat processes
@@ -530,7 +530,7 @@ done
 # If considering to use pid files, see this:
 # http://stackoverflow.com/questions/696839/
 
-# TODO: Standarize variable names to use underscores, camellcase, or
+# TODO: Standardize variable names to use underscores, camellcase, or
 # something.
 
 # TODO: Everything should be in English.
