@@ -233,7 +233,7 @@ do
 	subjectdir="${groupdir}/${subject}"
 
         # This condition is useful to debug this script
-	if true #[ ${group} == "${g_pre}4" ] && [ $subject == "${s_pre}10" ]
+	if true #[ ${group} = "${g_pre}4" ] && [ $subject = "${s_pre}10" ]
 	then
 
 	    outputdir="${resultsdir}/${group}/${subject}/${run}"
