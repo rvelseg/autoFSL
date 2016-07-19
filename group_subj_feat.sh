@@ -139,13 +139,13 @@ num_re='^[0-9]+$'
 
 while [ True ];
 do
-    if [ "$1" = "--clobber" -o "$1" = "-c" ];
+    if [ "${1}" = "--clobber" -o "${1}" = "-c" ];
     then
 	clobber=1
 	shift 1
-    elif [ "$1" = "--run" -o "$1" = "-r"  ];
+    elif [ "${1}" = "--run" -o "${1}" = "-r"  ];
     then
-	if ! [[ $2 =~ $num_re ]]
+	if ! [[ ${2} =~ ${num_re} ]]
 	then
 	    echo "ERROR: N must be a number." >&2
 	    cmdusage
@@ -156,15 +156,15 @@ do
 	    run="run${2}"
     	    shift 2
 	fi
-    elif [ "$1" = "--dry-run" -o "$1" = "-n"  ];
+    elif [ "${1}" = "--dry-run" -o "${1}" = "-n"  ];
     then
 	dryrun=1
     	shift 1
-    elif [ "$1" = "--help" -o "$1" = "-h"  ];
+    elif [ "${1}" = "--help" -o "${1}" = "-h"  ];
     then
 	cmdhelp
         exit 0
-    # elif [ "$1" = "--otheroption" -o "$1" = "-oo"  ];
+    # elif [ "${1}" = "--otheroption" -o "${1}" = "-o"  ];
     # then
     # 	whatever
     # 	shift somenumber
