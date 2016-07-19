@@ -125,6 +125,8 @@ onsetd="PUERTAS"
 o_pre="puerta"
 # Amount of onset files.
 o_num="4"
+# Log directory
+logdir="${resultsdir}/logs/"
 # --------------------------------------------------------
 
 # Get absolute paths of the main directories
@@ -192,6 +194,15 @@ then
        exit 0
    fi
 fi
+
+if [ ! -d "${logdir}" ]
+then
+    mkdir -p "${logdir}" || exit 1
+fi
+# Don't change the order of these two commands, if you do it stderr
+# will also be in stdout log.
+exec 2> >(tee -a "${logdir}/${run}.stderr")
+exec 1> >(tee -a "${logdir}/${run}.stdout")
 
 # TODO: ask for a template file, not a template directory.
 # TODO: use a different name for the following variable
@@ -484,6 +495,8 @@ done
 # [ -z ${dryrun+x} ] && [ -z ${clobber+x} ] && ${report_script} --silent ${run}
 
 [ ! -z ${dryrun+x} ] && echo "Dry run mode: listed commands were NOT executed."
+
+# TODO: Add option to clear logs.
 
 # TODO: Standarize the use of subshells, use $(command),
 # rather than `command`
