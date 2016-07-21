@@ -7,7 +7,7 @@ function cmdusage {
 
 USAGE
 
-${script_name} [-s] [-c <path>] -r N
+${script_name} [-s] [-c <path>] -r <run_id>
 ${script_name} -h
 UsageMessage
 }
@@ -32,8 +32,9 @@ build reports.
 
 MANDATORY OPTIONS
 
--r, --run N An integer number, used for the name of the results
-  directory to be read, as runN.
+-r, --run <run_id>
+  An integer number, used for the name of the results directory to be
+  read, as run<run_id>.
 
 OTHER OPTIONS
 
@@ -104,14 +105,14 @@ while [ True ]; do
     then
 	if ! [[ ${2} =~ ${num_re} ]]
 	then
-	    echo "ERROR: N must be a number." >&2
+	    echo "ERROR: <run_id> must be an integer." >&2
 	    cmdusage
             echo
             echo "Use -h option for a detailed description."
 	    exit 1
 	else
-	    N=${2}
-	    run="run${2}"
+	    run_id=${2}
+	    run="run${run_id}"
     	    shift 2
 	fi
     else

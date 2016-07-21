@@ -7,7 +7,7 @@ function cmdusage {
 
 USAGE
 
-${script_name} [-cn] -r N
+${script_name} [-cn] -r <run_id>
 ${script_name} -h
 UsageMessage
 }
@@ -36,9 +36,9 @@ directories of each subject.
 
 MANDATORY OPTIONS
 
--r, --run N
+-r, --run <run_id>
   An integer number, used for the name of the results directory,
-  as runN.
+  as run<run_id>.
 
 OTHER OPTIONS
 
@@ -100,7 +100,7 @@ HelpMessage
 # ---------------------------------------------------------
 #          Mandatory
 # ---------------------------------------------------------
-# A directory containing /runN/template.fsf
+# A directory containing /run<run_id>/template.fsf
 templatedir="./templates/"
 # Root of the results directory structure
 resultsdir="../results"
@@ -147,14 +147,14 @@ do
     then
 	if ! [[ ${2} =~ ${num_re} ]]
 	then
-	    echo "ERROR: N must be a number." >&2
+	    echo "ERROR: <run_id> must be an integer." >&2
 	    cmdusage
             echo
             echo "Use -h option for a detailed description."
 	    exit 1
 	else
-	    N=${2}
-	    run="run${2}"
+	    run_id=${2}
+	    run="run${run_id}"
     	    shift 2
 	fi
     elif [ "${1}" = "--dry-run" -o "${1}" = "-n"  ];
@@ -474,7 +474,7 @@ ${brainpath_reo}.nii.gz \
             ############################################################
             ######### Execute feat
 
-	    [ -z ${dryrun+x} ] && ${report_script} --current "${group}/${subject}" --silent -r ${N} &
+	    [ -z ${dryrun+x} ] && ${report_script} --current "${group}/${subject}" --silent -r ${run_id} &
 
 	    echo "INFO: ${group} ${subject} : begin : feat : $(date +"%x %T")"
 	    cmd="feat"
@@ -493,7 +493,7 @@ ${brainpath_reo}.nii.gz \
     done
 done
 
-[ -z ${dryrun+x} ] && [ -z ${clobber+x} ] && ${report_script} --silent -r ${N}
+[ -z ${dryrun+x} ] && [ -z ${clobber+x} ] && ${report_script} --silent -r ${run_id}
 
 [ ! -z ${dryrun+x} ] && echo "Dry run mode: listed commands were NOT executed."
 
