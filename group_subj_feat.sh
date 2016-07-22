@@ -19,17 +19,18 @@ function cmdhelp {
 
 DESCRIPTION
 
-This script runs feat on multiple subjects. The FRMI results must be
-organized in numbered directories for subjects, within numbered
+This script runs \`feat\` on multiple subjects. The FRMI results must
+be organized in numbered directories for subjects, within numbered
 directories for groups, see the example below.
 
-The analysis is based in a template file fsf. Using awk fsf files are
-generated for each subject with the appropriate values. Strings to
-substituted in the template file must be empty , as "".
+The analysis is based in a template \`.fsf\` file. Using \`awk\`
+specific \`.fsf\` files are generated for each subject, with the
+appropriate values. Strings to substituted in the template file must
+be empty , as "".
 
-The intended way to get the template is to perform a feat analysis in
-one subject using the GUI, and then remove some of the parameters of
-the resulting design.fsf file.
+The prefered way to get the template is to perform a \`feat\` analysis
+in one subject using the GUI, and then remove some of the parameters
+of the resulting \`design.fsf\` file.
 
 Results will be placed in a different directory structure, inside the
 directories of each subject.
@@ -38,7 +39,7 @@ MANDATORY OPTIONS
 
 -r, --run <run_id>
   An integer number, used for the name of the results directory,
-  as run<run_id>.
+  as \`run<run_id>\`.
 
 OTHER OPTIONS
 
@@ -46,7 +47,7 @@ OTHER OPTIONS
   Display this help message.
 
 -c, --clobber
-  Remove the results for the specified value of N.
+  Remove the results for the specified value of <run_id>.
 
 -n, --dry-run
   Print the analysis commands that would be executed, but don't
@@ -61,26 +62,44 @@ to change values in the script.
 
 EXAMPLE
 
-If your FMRI data have the following structure
+The FMRI must data have the following structure
 
 raw_data
 |-- group_1
 |   |-- subj_1
 |   |-- subj_2
 |   |-- subj_3
-|    -- subj_4
- -- group_2
+|   \`-- subj_4
+\`-- group_2
     |-- subj_1
     |-- subj_2
-     -- subj_3
+    \`-- subj_3
 
-To run feat in all subjects, with the run identifier 8, use
+Prefixes of groups and subjects are configurable within the
+script. Each subject directory must have the following structure
+
+gruop_2/subj_1/
+|-- anatomic
+|   \`-- somefilename.nii.gz
+|-- onset
+|   |-- task1.txt
+|   |-- task2.txt
+|   |-- task3.txt
+|   \`-- task4.txt
+\`-- funcional
+    \`-- somefilename.nii.gz
+
+The names <anatomic>, <onset>, <functional>, <task>, are configurable
+in this script.
+
+Then, to run \`feat\` in all subjects, with the run identifier 8, use
 
 ${script_name} -r 8
 
-A similar structure will be generated in the results directory, and
-inside each subject directory results will be stored in a run8
-sub directory.
+A similar structure will be generated in the results directory,
+without the original FMRI and anatomic files. Results will be stored
+in a run8 sub directory, inside each subject directory of the new
+structure.
 
 KNOWN ISSUES
 
@@ -165,7 +184,7 @@ do
     then
 	cmdhelp
         exit 0
-    # elif [ "${1}" = "--otheroption" -o "${1}" = "-o"  ];
+    # elif [ "${1}" = "--other-option" -o "${1}" = "-o"  ];
     # then
     # 	whatever
     # 	shift somenumber
