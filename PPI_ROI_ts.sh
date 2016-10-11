@@ -116,6 +116,13 @@ rawdatadir="../datos_brutos"
 # maks file of the ROI
 maskpath="../${run}/PPI_ROI_mask.img"
 # ---------------------------------------------------------
+#          With default values
+# ---------------------------------------------------------
+# Group name prefix
+g_pre="grupo_"
+# Subject name prefix
+s_pre="suj_"
+# --------------------------------------------------------
 
 # Get absolute paths
 resultsdir=$(readlink -f ${resultsdir})
