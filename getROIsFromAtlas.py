@@ -74,7 +74,7 @@ output, error = proc.communicate()
 for label in labels :
     index = str(label.attrib['index'])
     roifile1 = tmpdir + "/" + index.zfill(4) + ".nii.gz"
-    roifile2 = argsv['outdir'] + "/" + index.zfill(4) + " - " + slugify(unicode(label.text)) + ".nii.gz"
+    roifile2 = argsv['outdir'] + "/" + index.zfill(4) + "_" + slugify(unicode(label.text)) + ".nii.gz"
     shutil.move(roifile1, roifile2)
 
 shutil.rmtree(tmpdir)
